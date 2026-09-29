@@ -102,12 +102,12 @@ const Calculator = () => {
             <div>
               <label className="block text-white/80 font-medium mb-4 text-sm">{t('calc.optionsLabel')}</label>
               <div className="space-y-3">
-                <label className="flex items-center gap-3 cursor-pointer group">
-                  <div className={`w-5 h-5 rounded border flex items-center justify-center transition-colors ${mesh ? 'bg-white border-white' : 'border-white/20 group-hover:border-white/50'}`}>
-                    {mesh && <div className="w-2.5 h-2.5 bg-black rounded-sm" />}
+                <label className={`flex items-center gap-3 ${users > 15 ? 'cursor-not-allowed opacity-80' : 'cursor-pointer group'}`}>
+                  <div className={`w-5 h-5 rounded border flex items-center justify-center transition-colors ${autoMesh ? 'bg-white border-white' : 'border-white/20 group-hover:border-white/50'}`}>
+                    {autoMesh && <div className="w-2.5 h-2.5 bg-black rounded-sm" />}
                   </div>
-                  <input type="checkbox" checked={mesh} onChange={(e) => setMesh(e.target.checked)} className="hidden" />
-                  <span className="text-white/70 text-sm group-hover:text-white transition-colors">{t('calc.meshOption')}</span>
+                  <input type="checkbox" checked={autoMesh} onChange={(e) => { if (users <= 15) setMesh(e.target.checked) }} className="hidden" />
+                  <span className={`text-sm transition-colors ${autoMesh ? 'text-white' : 'text-white/70 group-hover:text-white'}`}>{t('calc.meshOption')}</span>
                 </label>
                 
                 <label className="flex items-center gap-3 cursor-pointer group">
